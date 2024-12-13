@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+   xmlns="https://jakarta.ee/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                       https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+   <persistence-unit name="product-crudPersistenceUnit">
+      <!-- Conectar al DataSource configurado en WildFly -->
+      <jta-data-source>java:jboss/datasources/ejPostgresDS</jta-data-source>
+      <properties>
+         <!-- Dialecto de PostgreSQL para Hibernate -->
+         <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+
+         <!-- Configuración de generación de esquema -->
+         <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+
+         <!-- Opcionales: Mostrar las consultas SQL en los logs -->
+		 <property name="hibernate.hbm2ddl.auto" value="update" />
+		 <property name="hibernate.show_sql" value="true" />
+		 <property name="hibernate.format_sql" value="true" />
+      </properties>
+   </persistence-unit>
+</persistence>
